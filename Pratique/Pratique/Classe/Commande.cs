@@ -62,15 +62,11 @@ namespace Pratique.Classe
         }
 
 
-        public double Sum()
+        public double Total()
         {
 
             double sum = 0;
-
-            for (int i = 0; i < lines.Length; i++)
-            {
-                sum+=lines[i].TotalPrice();
-            }
+            lines.ForEach(l => sum+=l.TotalLine());
 
             return sum;
         }

@@ -83,7 +83,7 @@ namespace Pratique.Classe
         }
 
 
-        public double TotalPrice()
+        public double TotalLine()
         {
             return this.product.Price * this.Qte;
         }
