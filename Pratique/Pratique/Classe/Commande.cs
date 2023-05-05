@@ -14,7 +14,7 @@ namespace Pratique.Classe
         private DateTime date;
         private List<ProductLine> lines = { };
         private Client client;
-        static List<Commande> commande_list = { };
+        public static List<Commande> commande_list = { };
 
         public Commande()
         {
@@ -33,6 +33,8 @@ namespace Pratique.Classe
             if (i >= 0 || i < Client.clients.Count()) {
                 this.client = client;
             }
+
+            commande_list.Add(this);
         }
 
         public int getId()

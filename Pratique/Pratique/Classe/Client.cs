@@ -76,5 +76,15 @@ namespace Pratique.Classe
 
             set { d_naiss = value; }
         }
+
+        public TotalCommande(){
+            double total = 0;
+            ForEach(Commande cmd in Commande.commande_list){
+                if(cmd.Client==this){
+                    total+=cmd.Total();
+                }
+            }
+            return total;
+        }
     }
 }
