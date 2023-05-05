@@ -12,9 +12,9 @@ namespace Pratique.Classe
 
         private int _id;
         private DateTime date;
-        private ProductLine[] line;
+        private List<ProductLine> lines = { };
         private Client client;
-        
+        static List<Commande> commande_list = { };
 
         public Commande()
         {
@@ -23,12 +23,16 @@ namespace Pratique.Classe
             this.date = DateTime.Now;
         }
 
-        public Commande(DateTime date, ProductLine[] line, Client client) : this()
+        public Commande(DateTime date, List<ProductLine> lines, Client client) : this()
         {
 
             this.date = date;
-            this.line = line;
-            this.client = client;
+            this.lines = lines;
+            int i = Client.clients.FindIndex(cl => cl.Code == client.Code);
+
+            if (i >= 0 || i < Client.clients.Count()) {
+                this.client = client;
+            }
         }
 
         public int getId()
@@ -44,11 +48,11 @@ namespace Pratique.Classe
         }
 
 
-        public ProductLine[] Line 
+        public List<ProductLine> Lines 
         { 
-            get => line;
+            get => lines;
             
-            set => this.line = value; 
+            set => this.lines = value; 
         }
 
         public Client Client
@@ -63,9 +67,9 @@ namespace Pratique.Classe
 
             double sum = 0;
 
-            for (int i = 0; i < line.Length; i++)
+            for (int i = 0; i < lines.Length; i++)
             {
-                sum+=line[i].TotalPrice();
+                sum+=lines[i].TotalPrice();
             }
 
             return sum;

@@ -11,8 +11,13 @@ namespace Pratique.Classe
         private string label;
         private int qteStk;
         private double price;
+        public static List<Product> products = { };
+        static int num = 0;
 
-        public Product(int qteStk, double price)
+        public Product(){
+            this.codeProd = "Product"+num.ToString();
+        }
+        public Product(int qteStk, double price) : this()
         {
             if (qteStk < 0)
             {
@@ -34,16 +39,20 @@ namespace Pratique.Classe
                 this.price = price;
             }
         }
+
         public Product(string codeProd, string label, int qteStk, double price) : this(qteStk, price)
         {
 
             this.codeProd = codeProd;
             this.label = label;
+
+            Product.products.Add(this);
         }
 
         public string CodeProd
         {
             get => this.codeProd;
+            set => codeProd = value;
         }
 
         public string Label

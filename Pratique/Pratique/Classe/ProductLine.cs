@@ -15,7 +15,6 @@ namespace Pratique.Classe
         private int qte;
         private Product product;
 
-
         public ProductLine() {
 
             auto_id++;
@@ -28,8 +27,25 @@ namespace Pratique.Classe
         public ProductLine(DateTime date, int qte, Product product) : this() {
 
             this.date = date;
-            this.qte = qte;
+
+            if(qte > 0)
+                {
+                    this.qte = qte;
+                }
+                
             this.product = product;
+
+            int i = Product.products.FindIndex(produit => produit.CodeProd == product.CodeProd);
+
+            if (i >= 0 || i < Product.products.Count()) {
+                if (Product.products[i].QteStk >= qte)
+                {
+                    Product.products[i].QteStk-=qte;
+
+                }
+            }
+            
+            
         }
 
         public int getId()

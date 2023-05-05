@@ -14,7 +14,7 @@ namespace Pratique.Classe
         private string name;
         private string surname;
         private DateTime d_naiss;
-
+        public static List<Client> clients = new List<Client>();
 
         public Client(){
             auto_code++;
@@ -32,6 +32,8 @@ namespace Pratique.Classe
 
             this.surname = surname;
             this.d_naiss = d_naiss;
+
+            Client.clients.Add(this);
         }
 
         public string FullName(){
